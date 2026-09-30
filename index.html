@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portugal Select 葡萄牙旅遊網站：里斯本、波多、辛特拉景點資訊、客製化行程規劃器與旅遊需求表單。">
+  <title>Portugal Select｜葡萄牙深度旅遊規劃</title>
+
+  <style>
+    :root{
+      --navy:#12304a;
+      --navy2:#0c2639;
+      --blue:#2d6f92;
+      --cream:#f8f5ee;
+      --sand:#d8b36a;
+      --orange:#c86538;
+      --text:#1d2933;
+      --muted:#667782;
+      --white:#fff;
+      --line:#dce5e8;
+      --sky:#eaf4f7;
+      --shadow:0 18px 48px rgba(18,48,74,.12);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
+      background:var(--cream);
+      color:var(--text);
+      line-height:1.7;
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    button,input,select{font:inherit}
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:15px clamp(20px,5vw,70px);
+      background:rgba(248,245,238,.94);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(18,48,74,.08);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:var(--navy);
+      font-weight:900;
+      letter-spacing:.05em;
+    }
+
+    .brand-mark{
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--navy),var(--blue));
+      color:#fff;
+    }
+
+    nav{
+      display:flex;
+      gap:22px;
+      font-size:14px;
+      font-weight:800;
+      color:#425864;
+    }
+
+    nav a:hover{color:var(--orange)}
+
+    .nav-cta{
+      padding:8px 14px;
+      border-radius:999px;
+      background:var(--navy);
+      color:#fff!important;
+    }
+
+    .hero{
+      min-height:76vh;
+      position:relative;
+      display:grid;
+      align-items:end;
+      color:#fff;
+      background:
+        linear-gradient(90deg,rgba(9,28,42,.88),rgba(9,28,42,.50) 52%,rgba(9,28,42,.14)),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Bel%C3%A9m_Tower_in_Lisbon.jpg") center/cover no-repeat;
+      overflow:hidden;
+    }
+
+    .hero:after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      height:140px;
+      background:linear-gradient(transparent,var(--cream));
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      padding:88px clamp(22px,7vw,108px) 135px;
+      max-width:820px;
+    }
+
+    .eyebrow{
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:12px;
+      font-weight:900;
+      color:#efd19a;
+      margin-bottom:14px;
+    }
+
+    .hero h1,.section-head h2,.planner-title,.form-intro h2{
+      font-family:Georgia,"Times New Roman",serif;
+    }
+
+    .hero h1{
+      font-size:clamp(46px,7vw,84px);
+      line-height:1.03;
+      margin:0 0 18px;
+    }
+
+    .hero p{
+      font-size:clamp(17px,2vw,21px);
+      color:#eef5f7;
+      max-width:690px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .btn{
+      border:0;
+      border-radius:999px;
+      padding:13px 19px;
+      font-weight:900;
+      cursor:pointer;
+      transition:.2s ease;
+    }
+
+    .btn:hover{transform:translateY(-1px)}
+    .btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+
+    .btn-primary{background:var(--sand);color:#172631}
+    .btn-light{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.34);color:#fff}
+    .btn-dark{background:var(--navy);color:#fff}
+
+    .container{
+      width:min(1180px,calc(100% - 36px));
+      margin:auto;
+    }
+
+    section{padding:82px 0}
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:28px;
+      margin-bottom:34px;
+    }
+
+    .section-head h2{
+      font-size:clamp(34px,4vw,50px);
+      color:var(--navy);
+      line-height:1.1;
+      margin:3px 0 0;
+    }
+
+    .section-head p{
+      max-width:570px;
+      color:var(--muted);
+      margin:0;
+    }
+
+    .city-tabs{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:30px;
+    }
+
+    .city-tab{
+      background:#fff;
+      border:1px solid var(--line);
+      padding:10px 16px;
+      border-radius:999px;
+      font-weight:900;
+      color:var(--navy);
+      cursor:pointer;
+    }
+
+    .city-tab.active{
+      background:var(--navy);
+      color:#fff;
+      border-color:var(--navy);
+    }
+
+    .city-intro{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:24px;
+      margin-bottom:26px;
+    }
+
+    .city-copy,.quick-info{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:27px;
+    }
+
+    .city-copy h3{
+      margin:0 0 8px;
+      color:var(--navy);
+      font-size:27px;
+    }
+
+    .city-copy p{
+      color:var(--muted);
+      margin-bottom:0;
+    }
+
+    .quick-info{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    .quick-info strong{
+      display:block;
+      color:var(--navy);
+      font-size:13px;
+    }
+
+    .quick-info span{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .place-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:25px;
+    }
+
+    .place-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .place-photo{
+      width:100%;
+      height:310px;
+      object-fit:contain;
+      background:#e1e9ec;
+    }
+
+    .place-body{padding:25px}
+
+    .place-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:16px;
+    }
+
+    .place-top h3{
+      margin:0;
+      color:var(--navy);
+      font-size:24px;
+    }
+
+    .badge{
+      background:var(--sky);
+      color:var(--blue);
+      font-size:12px;
+      font-weight:900;
+      padding:6px 10px;
+      border-radius:999px;
+      white-space:nowrap;
+    }
+
+    .place-summary{color:var(--muted)}
+
+    .place-layout{
+      display:grid;
+      grid-template-columns:2fr 1fr;
+      gap:17px;
+      align-items:start;
+    }
+
+    .facts{display:grid;gap:11px}
+
+    .fact{
+      border-left:3px solid var(--sand);
+      padding-left:12px;
+    }
+
+    .fact strong{
+      display:block;
+      color:var(--navy);
+      font-size:13px;
+    }
+
+    .fact span{
+      font-size:14px;
+      color:#52636e;
+    }
+
+    .mini-map{
+      width:100%;
+      height:190px;
+      border:0;
+      border-radius:15px;
+      background:#e7edef;
+    }
+
+    .planner-section{background:#f0eadf}
+
+    .planner-shell{
+      background:linear-gradient(135deg,var(--navy2),var(--navy));
+      border-radius:30px;
+      padding:clamp(24px,4vw,42px);
+      color:#fff;
+      box-shadow:0 24px 60px rgba(9,34,50,.2);
+    }
+
+    .planner-top{
+      display:flex;
+      justify-content:space-between;
+      gap:25px;
+      align-items:end;
+      margin-bottom:26px;
+    }
+
+    .planner-title{
+      font-size:clamp(34px,4vw,48px);
+      margin:0;
+    }
+
+    .planner-top p{
+      max-width:520px;
+      color:#cbdbe4;
+      margin:0;
+    }
+
+    .planner-grid{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:24px;
+    }
+
+    .planner-form,.itinerary{
+      background:#fff;
+      color:var(--text);
+      border-radius:21px;
+      padding:24px;
+    }
+
+    .field{margin-bottom:19px}
+
+    .field .title{
+      display:block;
+      color:var(--navy);
+      font-size:13px;
+      font-weight:900;
+      margin-bottom:8px;
+    }
+
+    .check-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:9px;
+    }
+
+    .check{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:#fbfcfc;
+      padding:10px 11px;
+      cursor:pointer;
+    }
+
+    .check input{
+      width:auto;
+      accent-color:var(--navy);
+    }
+
+    .row2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    input,select{
+      width:100%;
+      padding:11px 12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:#fff;
+      color:var(--text);
+      outline:none;
+    }
+
+    input:focus,select:focus{
+      border-color:#7ba2b6;
+      box-shadow:0 0 0 3px rgba(45,111,146,.1);
+    }
+
+    .submit-wide{width:100%}
+
+    .itinerary h3{
+      margin-top:0;
+      color:var(--navy);
+      font-size:24px;
+    }
+
+    .empty-state{
+      min-height:280px;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      color:var(--muted);
+      border:1px dashed #cad6db;
+      border-radius:15px;
+      padding:28px;
+    }
+
+    .day-card{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px 15px;
+      margin-bottom:11px;
+    }
+
+    .day-card h4{
+      margin:0 0 7px;
+      color:var(--navy);
+    }
+
+    .day-card ul{
+      margin:0;
+      padding-left:19px;
+      color:#53646e;
+    }
+
+    .plan-note{
+      font-size:12px;
+      color:#73838d;
+      margin-top:11px;
+    }
+
+    .inquiry-section{
+      background:linear-gradient(135deg,var(--navy2),var(--navy));
+      color:#fff;
+    }
+
+    .inquiry-wrap{
+      display:grid;
+      grid-template-columns:.82fr 1.18fr;
+      gap:31px;
+      align-items:start;
+    }
+
+    .form-intro{
+      position:sticky;
+      top:98px;
+      padding-top:14px;
+    }
+
+    .form-intro h2{
+      font-size:clamp(38px,4.5vw,56px);
+      line-height:1.08;
+      margin:0 0 18px;
+    }
+
+    .form-intro p{color:#cbdbe4}
+
+    .form-benefit{
+      display:flex;
+      gap:11px;
+      margin:14px 0;
+      color:#e5eef2;
+    }
+
+    .form-benefit b{
+      width:28px;
+      height:28px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:rgba(216,179,106,.18);
+      color:#f0d19a;
+      flex:none;
+    }
+
+    .lead-form{
+      background:#fff;
+      color:var(--text);
+      border-radius:25px;
+      padding:clamp(24px,4vw,36px);
+      box-shadow:0 28px 70px rgba(0,0,0,.2);
+    }
+
+    .lead-form h3{
+      font-size:28px;
+      color:var(--navy);
+      margin:0 0 6px;
+    }
+
+    .lead-form .sub{
+      font-size:14px;
+      color:var(--muted);
+      margin:0 0 24px;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:17px;
+    }
+
+    .fgroup{
+      display:flex;
+      flex-direction:column;
+      gap:7px;
+    }
+
+    .fgroup.full{grid-column:1/-1}
+
+    .fgroup label{
+      font-size:13px;
+      font-weight:900;
+      color:var(--navy);
+    }
+
+    .req{color:var(--orange)}
+
+    .status-box{
+      display:none;
+      margin-top:17px;
+      padding:14px 15px;
+      border-radius:14px;
+      font-size:14px;
+    }
+
+    .status-box.success{
+      display:block;
+      background:#edf6ef;
+      color:#355b40;
+      border:1px solid #cfe4d4;
+    }
+
+    .status-box.error{
+      display:block;
+      background:#fff1f0;
+      color:#8a3a35;
+      border:1px solid #efcbc7;
+    }
+
+    .form-note{
+      text-align:center;
+      color:#7a8991;
+      font-size:12px;
+      margin:11px 0 0;
+    }
+
+    .food-band{background:#efe7d7}
+
+    .food-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:19px;
+    }
+
+    .food-card{
+      background:#fff;
+      border:1px solid #e2d6bf;
+      border-radius:18px;
+      padding:23px;
+    }
+
+    .food-card h3{
+      margin:7px 0;
+      color:var(--navy);
+    }
+
+    .food-card p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .food-icon{font-size:33px}
+
+    .tips-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:15px;
+    }
+
+    .tip{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:17px;
+      padding:19px;
+    }
+
+    .tip strong{
+      display:block;
+      color:var(--navy);
+      margin-bottom:5px;
+    }
+
+    .tip span{
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    footer{
+      background:#0e2638;
+      color:#cbd9df;
+      padding:33px clamp(20px,5vw,70px);
+      font-size:13px;
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    footer strong{color:#fff}
+
+    @media(max-width:900px){
+      nav{display:none}
+      .city-intro,.place-grid,.planner-grid,.inquiry-wrap{grid-template-columns:1fr}
+      .place-layout{grid-template-columns:1fr}
+      .food-grid{grid-template-columns:1fr}
+      .tips-grid{grid-template-columns:1fr 1fr}
+      .form-intro{position:static}
+      .section-head,.planner-top{flex-direction:column;align-items:flex-start}
+      .mini-map{height:220px}
+    }
+
+    @media(max-width:560px){
+      .hero{min-height:70vh}
+      .hero-content{padding:72px 22px 108px}
+      .quick-info,.row2,.check-grid,.form-grid,.tips-grid{grid-template-columns:1fr}
+      .place-photo{height:245px}
+      section{padding:62px 0}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#top">
+    <span class="brand-mark">P</span>
+    <span>PORTUGAL SELECT</span>
+  </a>
+
+  <nav>
+    <a href="#cities">三大城市</a>
+    <a href="#planner">行程規劃器</a>
+    <a href="#inquiry">旅遊需求表</a>
+    <a href="#food">葡式美食</a>
+    <a class="nav-cta" href="#inquiry">免費諮詢</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">Lisboa · Porto · Sintra</div>
+    <h1>把葡萄牙，排成真正適合你的旅行。</h1>
+    <p>先用客製化行程規劃器試排旅程，再填寫 9 項旅遊需求，讓規劃更貼近你的日期、人數、城市偏好與預算。</p>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#planner">先試排行程</a>
+      <a class="btn btn-light" href="#inquiry">填寫旅遊需求</a>
+    </div>
+  </div>
+</section>
+
+<section id="cities">
+  <div class="container">
+
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" style="color:var(--orange)">Three essential cities</div>
+        <h2>三座城市，三種葡萄牙表情</h2>
+      </div>
+
+      <p>每個景點包含代表照片、歷史典故、必看重點、推薦美食、交通資訊與約 1/3 寬度的地圖。</p>
+    </div>
+
+    <div class="city-tabs">
+      <button type="button" class="city-tab active" data-city="lisbon">里斯本 Lisboa</button>
+      <button type="button" class="city-tab" data-city="porto">波多 Porto</button>
+      <button type="button" class="city-tab" data-city="sintra">辛特拉 Sintra</button>
+    </div>
+
+    <div id="cityContent"></div>
+  </div>
+</section>
+
+<section id="planner" class="planner-section">
+  <div class="container">
+    <div class="planner-shell">
+
+      <div class="planner-top">
+        <div>
+          <div class="eyebrow">Smart trip planner</div>
+          <h2 class="planner-title">客製化旅遊規劃器</h2>
+        </div>
+
+        <p>選擇城市、興趣、旅遊天數、行程步調、預算與交通方式後，直接在網頁中產生建議行程。</p>
+      </div>
+
+      <div class="planner-grid">
+
+        <form class="planner-form" id="tripForm">
+
+          <div class="field">
+            <label class="title">1. 想去哪些城市？</label>
+            <div class="check-grid">
+              <label class="check"><input type="checkbox" name="pcity" value="lisbon" checked>里斯本 Lisboa</label>
+              <label class="check"><input type="checkbox" name="pcity" value="porto" checked>波多 Porto</label>
+              <label class="check"><input type="checkbox" name="pcity" value="sintra" checked>辛特拉 Sintra</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="title">2. 旅遊主題</label>
+            <div class="check-grid">
+              <label class="check"><input type="checkbox" name="pinterest" value="history" checked>歷史建築</label>
+              <label class="check"><input type="checkbox" name="pinterest" value="food">美食體驗</label>
+              <label class="check"><input type="checkbox" name="pinterest" value="photo">攝影景觀</label>
+              <label class="check"><input type="checkbox" name="pinterest" value="romance">浪漫散步</label>
+              <label class="check"><input type="checkbox" name="pinterest" value="culture">藝術文化</label>
+              <label class="check"><input type="checkbox" name="pinterest" value="relax">慢活放鬆</label>
+            </div>
+          </div>
+
+          <div class="row2">
+            <div class="field">
+              <label class="title">3. 旅遊天數</label>
+              <input id="days" type="number" min="2" max="10" value="5">
+            </div>
+
+            <div class="field">
+              <label class="title">4. 行程步調</label>
+              <select id="pace">
+                <option value="relaxed">悠閒：2–3 個重點</option>
+                <option value="balanced" selected>適中：3–4 個重點</option>
+                <option value="active">充實：4–5 個重點</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row2">
+            <div class="field">
+              <label class="title">5. 預算風格</label>
+              <select id="budget">
+                <option value="value">精打細算</option>
+                <option value="comfort" selected>舒適型</option>
+                <option value="premium">質感型</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label class="title">6. 城市間移動</label>
+              <select id="transport">
+                <option value="rail" selected>火車優先</option>
+                <option value="mixed">火車＋包車</option>
+                <option value="car">自駕／包車</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="btn btn-dark submit-wide" type="submit">產生我的專屬行程</button>
+        </form>
+
+        <div class="itinerary">
+          <h3>你的建議行程</h3>
+
+          <div id="planOutput" class="empty-state">
+            <div>
+              <div style="font-size:40px">🧭</div>
+              <strong>尚未產生行程</strong><br>
+              完成左側選項後，按下產生行程。
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="inquiry" class="inquiry-section">
+  <div class="container">
+
+    <div class="inquiry-wrap">
+
+      <div class="form-intro">
+        <div class="eyebrow">Personal travel inquiry</div>
+
+        <h2>喜歡剛剛的方向？留下你的實際旅遊需求。</h2>
+
+        <p>填寫以下 9 個項目，送出後資料會直接儲存到你的 Google Sheet。</p>
+
+        <div class="form-benefit">
+          <b>1</b>
+          <div>
+            <strong>快速掌握旅客基本資訊</strong><br>
+            日期、天數與旅遊人數。
+          </div>
+        </div>
+
+        <div class="form-benefit">
+          <b>2</b>
+          <div>
+            <strong>知道客戶真正想玩什麼</strong><br>
+            城市與興趣可以複選。
+          </div>
+        </div>
+
+        <div class="form-benefit">
+          <b>3</b>
+          <div>
+            <strong>更容易提供合適方案</strong><br>
+            依預算範圍做下一步規劃。
+          </div>
+        </div>
+      </div>
+
+      <form class="lead-form" id="leadForm">
+
+        <h3>葡萄牙客製旅遊需求表</h3>
+        <p class="sub">請填寫以下 9 項資訊。</p>
+
+        <div class="form-grid">
+
+          <div class="fgroup">
+            <label>1. 姓名 <span class="req">*</span></label>
+            <input name="name" type="text" placeholder="例如：王小明" required>
+          </div>
+
+          <div class="fgroup">
+            <label>2. Email <span class="req">*</span></label>
+            <input name="email" type="email" placeholder="name@example.com" required>
+          </div>
+
+          <div class="fgroup">
+            <label>3. WhatsApp / 電話 <span class="req">*</span></label>
+            <input name="contact" type="text" placeholder="+886 912 345 678" required>
+          </div>
+
+          <div class="fgroup">
+            <label>4. 預計出發日期 <span class="req">*</span></label>
+            <input name="departure" type="date" required>
+          </div>
+
+          <div class="fgroup">
+            <label>5. 旅遊天數 <span class="req">*</span></label>
+            <select name="travelDays" required>
+              <option value="">請選擇</option>
+              <option>3 天</option>
+              <option>4 天</option>
+              <option>5 天</option>
+              <option>6 天</option>
+              <option>7 天</option>
+              <option>8 天</option>
+              <option>9 天</option>
+              <option>10 天以上</option>
+            </select>
+          </div>
+
+          <div class="fgroup">
+            <label>6. 旅遊人數 <span class="req">*</span></label>
+            <select name="people" required>
+              <option value="">請選擇</option>
+              <option>1 人</option>
+              <option>2 人</option>
+              <option>3 人</option>
+              <option>4 人</option>
+              <option>5–6 人</option>
+              <option>7–10 人</option>
+              <option>10 人以上</option>
+            </select>
+          </div>
+
+          <div class="fgroup full">
+            <label>7. 想去的城市 <span class="req">*</span></label>
+
+            <div class="check-grid">
+              <label class="check"><input type="checkbox" name="cities" value="里斯本 Lisboa">里斯本 Lisboa</label>
+              <label class="check"><input type="checkbox" name="cities" value="波多 Porto">波多 Porto</label>
+              <label class="check"><input type="checkbox" name="cities" value="辛特拉 Sintra">辛特拉 Sintra</label>
+            </div>
+          </div>
+
+          <div class="fgroup full">
+            <label>8. 旅遊興趣 <span class="req">*</span></label>
+
+            <div class="check-grid">
+              <label class="check"><input type="checkbox" name="interests" value="歷史建築">歷史建築</label>
+              <label class="check"><input type="checkbox" name="interests" value="美食體驗">美食體驗</label>
+              <label class="check"><input type="checkbox" name="interests" value="攝影景觀">攝影景觀</label>
+              <label class="check"><input type="checkbox" name="interests" value="浪漫散步">浪漫散步</label>
+              <label class="check"><input type="checkbox" name="interests" value="藝術文化">藝術文化</label>
+              <label class="check"><input type="checkbox" name="interests" value="慢活放鬆">慢活放鬆</label>
+            </div>
+          </div>
+
+          <div class="fgroup full">
+            <label>9. 預算範圍 <span class="req">*</span></label>
+
+            <select name="budgetRange" required>
+              <option value="">請選擇每人預算</option>
+              <option>€500 以下</option>
+              <option>€500–1,000</option>
+              <option>€1,000–1,500</option>
+              <option>€1,500–2,500</option>
+              <option>€2,500 以上</option>
+              <option>尚未決定，希望依行程建議</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="submitInquiryBtn" type="submit" class="btn btn-dark submit-wide" style="margin-top:22px">
+          送出我的旅遊需求
+        </button>
+
+        <p class="form-note">
+          送出後，資料會直接寫入你指定的 Google Sheet。
+        </p>
+
+        <div id="statusBox" class="status-box"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="food" class="food-band">
+  <div class="container">
+
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" style="color:var(--orange)">Taste Portugal</div>
+        <h2>不能錯過的葡式味道</h2>
+      </div>
+
+      <p>里斯本、波多與辛特拉各自有值得安排進行程的飲食體驗。</p>
+    </div>
+
+    <div class="food-grid">
+
+      <article class="food-card">
+        <div class="food-icon">🥧</div>
+        <h3>Pastel de Nata</h3>
+        <p>里斯本代表甜點之一，酥皮配焦香蛋奶餡，適合搭配咖啡。</p>
+      </article>
+
+      <article class="food-card">
+        <div class="food-icon">🥪</div>
+        <h3>Francesinha</h3>
+        <p>波多經典料理，以肉類、起司與濃郁醬汁組成，份量十足。</p>
+      </article>
+
+      <article class="food-card">
+        <div class="food-icon">🍲</div>
+        <h3>Bacalhau</h3>
+        <p>葡萄牙飲食文化中的經典鱈魚料理，各地有不同傳統做法。</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="tips">
+  <div class="container">
+
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" style="color:var(--orange)">Practical guide</div>
+        <h2>交通與行程安排重點</h2>
+      </div>
+    </div>
+
+    <div class="tips-grid">
+      <div class="tip">
+        <strong>里斯本市區</strong>
+        <span>地鐵、電車、公車與步行混用，老城區坡度較大。</span>
+      </div>
+
+      <div class="tip">
+        <strong>里斯本 → 辛特拉</strong>
+        <span>可搭近郊火車前往，再轉當地公車或計程車。</span>
+      </div>
+
+      <div class="tip">
+        <strong>里斯本 → 波多</strong>
+        <span>城際火車是常見且方便的移動方式。</span>
+      </div>
+
+      <div class="tip">
+        <strong>波多市區</strong>
+        <span>步行搭配 Metro、公車即可，河岸區高低差明顯。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div>
+    <strong>PORTUGAL SELECT</strong><br>
+    葡萄牙旅遊規劃示範網站
+  </div>
+
+  <div>
+    影像：Wikimedia Commons｜地圖：Google Maps Embed｜票價、開放時間與交通班次請於出發前再查詢官方資訊。
+  </div>
+</footer>
+
+<script>
+const cityData = {
+  lisbon: {
+    name:"里斯本 Lisboa",
+    subtitle:"大航海時代、黃色電車與特茹河交織而成的首都",
+    intro:"里斯本建於丘陵與特茹河畔，是葡萄牙政治與文化核心。15–16 世紀的大航海時代留下大量曼努埃爾式建築與航海記憶。",
+    quick:[
+      ["建議停留","2–3 天"],
+      ["旅行氣氛","歷史、河岸、美食"],
+      ["交通重點","地鐵＋電車＋步行"],
+      ["推薦區域","Belém、Baixa、Alfama"]
+    ],
+    places:[
+      {
+        title:"貝倫塔 Torre de Belém",
+        badge:"UNESCO",
+        photo:"https://commons.wikimedia.org/wiki/Special:FilePath/Bel%C3%A9m_Tower_in_Lisbon.jpg",
+        summary:"矗立特茹河岸的大航海地標，是里斯本最具代表性的歷史建築之一。",
+        history:"16 世紀初興建，與葡萄牙海上擴張時期密切相關。",
+        must:"外觀細節、河岸步道與塔體景觀。",
+        food:"Pastel de Nata、海鮮或鱈魚料理。",
+        transport:"由市中心搭電車、公車或火車至 Belém 區後步行。",
+        map:"https://www.google.com/maps?q=Torre%20de%20Bel%C3%A9m%20Lisbon&output=embed",
+        tags:["history","photo","culture"]
+      },
+      {
+        title:"熱羅尼莫斯修道院",
+        badge:"建築必訪",
+        photo:"https://commons.wikimedia.org/wiki/Special:FilePath/Le_Mosteiro_dos_Jeronimos_%2829853463853%29.jpg",
+        summary:"以曼努埃爾式建築與航海象徵聞名，是里斯本重要宗教建築。",
+        history:"16 世紀初開始興建，與葡萄牙航海黃金時代緊密相連。",
+        must:"教堂、石雕門面、迴廊。",
+        food:"可與 Belém 蛋塔與咖啡安排在同一區。",
+        transport:"與貝倫塔同區，適合同日步行串聯。",
+        map:"https://www.google.com/maps?q=Mosteiro%20dos%20Jer%C3%B3nimos%20Lisbon&output=embed",
+        tags:["history","culture","photo"]
+      }
+    ]
+  },
+
+  porto: {
+    name:"波多 Porto",
+    subtitle:"杜羅河、鐵橋、彩色老城與波特酒文化",
+    intro:"波多歷史中心沿杜羅河高低起伏，中世紀街巷、河岸商業與 19 世紀工程建築共同構成獨特城市風貌。",
+    quick:[
+      ["建議停留","2 天"],
+      ["旅行氣氛","河岸、攝影、美食"],
+      ["交通重點","步行＋Metro"],
+      ["推薦區域","Ribeira、Sé、Gaia"]
+    ],
+    places:[
+      {
+        title:"路易一世大橋",
+        badge:"城市地標",
+        photo:"https://commons.wikimedia.org/wiki/Special:FilePath/Lu%C3%ADs_I_Bridge%2C_Porto%2C_Portugal.jpg",
+        summary:"跨越杜羅河、連接波多與 Gaia 的雙層鐵拱橋。",
+        history:"1886 年啟用，展現 19 世紀大型鐵構工程美學。",
+        must:"上層步行景觀、夕陽、俯瞰 Ribeira。",
+        food:"可搭配 Gaia 河岸餐廳與葡式料理。",
+        transport:"可由 Metro D 線及步行銜接。",
+        map:"https://www.google.com/maps?q=Dom%20Luis%20I%20Bridge%20Porto&output=embed",
+        tags:["history","photo","romance"]
+      },
+      {
+        title:"里貝拉河岸 Ribeira",
+        badge:"老城核心",
+        photo:"https://commons.wikimedia.org/wiki/Special:FilePath/Ribeira_Porto.jpg",
+        summary:"彩色建築沿杜羅河岸排列，是波多散步、用餐與拍照中心。",
+        history:"長期與河運、港口及商業活動密切相關。",
+        must:"河岸散步、彩色立面與傍晚燈光。",
+        food:"Francesinha、烤沙丁魚與海鮮。",
+        transport:"可由 São Bento 一帶步行下坡抵達。",
+        map:"https://www.google.com/maps?q=Ribeira%20Porto%20Portugal&output=embed",
+        tags:["food","photo","romance","relax"]
+      }
+    ]
+  },
+
+  sintra: {
+    name:"辛特拉 Sintra",
+    subtitle:"森林裡的宮殿、莊園與浪漫主義山城",
+    intro:"辛特拉因涼爽氣候與山區地形長期受到王室與貴族青睞，浪漫主義建築與森林景觀形成獨特氣氛。",
+    quick:[
+      ["建議停留","1–2 天"],
+      ["旅行氣氛","宮殿、森林、浪漫"],
+      ["交通重點","火車＋公車"],
+      ["推薦區域","Pena、Regaleira"]
+    ],
+    places:[
+      {
+        title:"佩納宮 Palácio da Pena",
+        badge:"浪漫主義",
+        photo:"https://commons.wikimedia.org/wiki/Special:FilePath/Palacio_Nacional_da_Pena%2C_Sintra%2C_Portugal%2C_2019-05-25%2C_DD_76.jpg",
+        summary:"紅黃外牆坐落山頂，是葡萄牙浪漫主義建築代表。",
+        history:"19 世紀由費爾南多二世推動改建，混合多種歷史建築元素。",
+        must:"宮殿外觀、露台、山景與園林。",
+        food:"辛特拉老城的 Travesseiro 或 Queijada。",
+        transport:"由辛特拉站轉公車或計程車上山。",
+        map:"https://www.google.com/maps?q=Pena%20Palace%20Sintra&output=embed",
+        tags:["history","photo","romance","culture"]
+      },
+      {
+        title:"雷加萊拉莊園",
+        badge:"神秘莊園",
+        photo:"https://commons.wikimedia.org/wiki/Special:FilePath/Quinta_da_Regaleira_%2834340647203%29.jpg",
+        summary:"結合宮殿、花園、洞穴與地下通道，以啟蒙井最受歡迎。",
+        history:"主要形成於 20 世紀初，由 Carvalho Monteiro 與 Luigi Manini 合作打造。",
+        must:"啟蒙井、地下通道、宮殿與花園。",
+        food:"可搭配辛特拉舊城甜點與咖啡館。",
+        transport:"距歷史中心不遠，可步行或搭短程交通。",
+        map:"https://www.google.com/maps?q=Quinta%20da%20Regaleira%20Sintra&output=embed",
+        tags:["history","photo","romance","culture"]
+      }
+    ]
+  }
+};
+
+const extraStops = {
+  lisbon:[
+    {name:"Alfama 阿爾法瑪老城",tags:["history","photo","romance"],note:"迷宮巷弄與觀景台。"},
+    {name:"商業廣場 Praça do Comércio",tags:["history","photo","relax"],note:"特茹河畔大型廣場。"},
+    {name:"里斯本市場美食",tags:["food","relax"],note:"安排葡式料理與甜點。"}
+  ],
+
+  porto:[
+    {name:"São Bento 車站",tags:["history","culture","photo"],note:"藍白瓷磚壁畫。"},
+    {name:"Clérigos 老城散步",tags:["history","culture","photo"],note:"傳統街區與城市天際線。"},
+    {name:"Gaia 河岸",tags:["food","photo","relax"],note:"欣賞波多老城與夕陽。"}
+  ],
+
+  sintra:[
+    {name:"辛特拉歷史中心",tags:["food","relax","culture"],note:"小巷與地方甜點。"},
+    {name:"摩爾人城堡",tags:["history","photo"],note:"中世紀遺跡與山景。"},
+    {name:"Monserrate 蒙塞拉特宮",tags:["culture","romance","relax"],note:"宮殿與植物園。"}
+  ]
+};
+
+function renderCity(key){
+  const c = cityData[key];
+
+  const quick = c.quick
+    .map(x => `<div><strong>${x[0]}</strong><span>${x[1]}</span></div>`)
+    .join("");
+
+  const cards = c.places.map(p => `
+    <article class="place-card">
+      <img
+        class="place-photo"
+        src="${p.photo}"
+        alt="${p.title}"
+        loading="lazy"
+        onerror="this.src='https://placehold.co/1200x800/e3ecef/24465d?text=Portugal+Travel'"
+      >
+
+      <div class="place-body">
+        <div class="place-top">
+          <h3>${p.title}</h3>
+          <span class="badge">${p.badge}</span>
+        </div>
+
+        <p class="place-summary">${p.summary}</p>
+
+        <div class="place-layout">
+          <div class="facts">
+            <div class="fact">
+              <strong>歷史典故</strong>
+              <span>${p.history}</span>
+            </div>
+
+            <div class="fact">
+              <strong>必去／必看</strong>
+              <span>${p.must}</span>
+            </div>
+
+            <div class="fact">
+              <strong>推薦美食</strong>
+              <span>${p.food}</span>
+            </div>
+
+            <div class="fact">
+              <strong>交通資訊</strong>
+              <span>${p.transport}</span>
+            </div>
+          </div>
+
+          <iframe
+            class="mini-map"
+            src="${p.map}"
+            loading="lazy"
+            title="${p.title} 地圖">
+          </iframe>
+        </div>
+      </div>
+    </article>
+  `).join("");
+
+  document.getElementById("cityContent").innerHTML = `
+    <div class="city-intro">
+      <div class="city-copy">
+        <h3>${c.name}</h3>
+        <strong>${c.subtitle}</strong>
+        <p>${c.intro}</p>
+      </div>
+
+      <div class="quick-info">${quick}</div>
+    </div>
+
+    <div class="place-grid">${cards}</div>
+  `;
+}
+
+document.querySelectorAll(".city-tab").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".city-tab")
+      .forEach(b => b.classList.remove("active"));
+
+    btn.classList.add("active");
+
+    renderCity(btn.dataset.city);
+  });
+});
+
+renderCity("lisbon");
+
+function checked(name){
+  return [...document.querySelectorAll(`input[name="${name}"]:checked`)]
+    .map(x => x.value);
+}
+
+document.getElementById("tripForm").addEventListener("submit", e => {
+  e.preventDefault();
+
+  const cities = checked("pcity");
+  const interests = checked("pinterest");
+
+  const days = Math.max(
+    2,
+    Math.min(
+      10,
+      Number(document.getElementById("days").value) || 5
+    )
+  );
+
+  const pace = document.getElementById("pace").value;
+  const budget = document.getElementById("budget").value;
+  const transport = document.getElementById("transport").value;
+
+  if (!cities.length){
+    alert("請至少選擇一座城市。");
+    return;
+  }
+
+  const paceCount = {
+    relaxed:2,
+    balanced:3,
+    active:4
+  }[pace];
+
+  const budgetText = {
+    value:"以大眾運輸、在地小館與免費景點為主",
+    comfort:"大眾運輸搭配付費景點與舒適餐廳",
+    premium:"可加入包車、景觀餐廳與更彈性的預約行程"
+  }[budget];
+
+  const transportText = {
+    rail:"城市間以火車為主",
+    mixed:"火車為主，辛特拉可搭配包車／計程車",
+    car:"城市間以自駕或包車為主"
+  }[transport];
+
+  let pool = [];
+
+  cities.forEach(c => {
+    cityData[c].places.forEach(p => {
+      pool.push({
+        city:c,
+        name:p.title,
+        tags:p.tags,
+        note:p.must
+      });
+    });
+
+    extraStops[c].forEach(p => {
+      pool.push({
+        city:c,
+        ...p
+      });
+    });
+  });
+
+  const score = item => {
+    return item.tags.reduce(
+      (sum, tag) => sum + (interests.includes(tag) ? 2 : 0),
+      0
+    );
+  };
+
+  pool.sort((a,b) => score(b) - score(a));
+
+  const allocation = {};
+
+  cities.forEach(c => allocation[c] = 0);
+
+  for (let i = 0; i < days; i++){
+    allocation[cities[i % cities.length]]++;
+  }
+
+  let cards = [];
+  let dayNo = 1;
+
+  cities.forEach(city => {
+    const cityPool = pool.filter(x => x.city === city);
+
+    for (let d = 0; d < allocation[city]; d++){
+      let picks = [];
+
+      for (let i = 0; i < paceCount; i++){
+        picks.push(
+          cityPool[(d * paceCount + i) % cityPool.length]
+        );
+      }
+
+      cards.push(`
+        <div class="day-card">
+          <h4>Day ${dayNo}｜${cityData[city].name}</h4>
+          <ul>
+            ${picks.map((x,i) => `
+              <li>${i === 0 ? "上午" : "行程"}：${x.name}｜${x.note}</li>
+            `).join("")}
+
+            <li>晚間：保留自由用餐與散步時間。</li>
+          </ul>
+        </div>
+      `);
+
+      dayNo++;
+    }
+  });
+
+  const out = document.getElementById("planOutput");
+
+  out.className = "";
+
+  out.innerHTML = `
+    <div style="padding-bottom:13px;color:#52646f">
+      <strong style="color:var(--navy)">
+        ${days} 天葡萄牙建議路線
+      </strong>
+      <br>
+      ${transportText}；${budgetText}。
+    </div>
+
+    ${cards.join("")}
+
+    <div class="plan-note">
+      行程為自動規劃示範，實際開放時間、票價與班次請出發前確認。
+    </div>
+  `;
+});
+
+document.getElementById("leadForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const form = this;
+  const submitBtn = document.getElementById("submitInquiryBtn");
+  const statusBox = document.getElementById("statusBox");
+
+  const cities = checked("cities");
+  const interests = checked("interests");
+
+  if (!cities.length){
+    alert("請至少選擇一個想去的城市。");
+    return;
+  }
+
+  if (!interests.length){
+    alert("請至少選擇一項旅遊興趣。");
+    return;
+  }
+
+  const formData = {
+    name: form.elements["name"].value.trim(),
+    email: form.elements["email"].value.trim(),
+    contact: form.elements["contact"].value.trim(),
+    departure: form.elements["departure"].value,
+    travelDays: form.elements["travelDays"].value,
+    people: form.elements["people"].value,
+    cities: cities,
+    interests: interests,
+    budgetRange: form.elements["budgetRange"].value
+  };
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "送出中…";
+
+  statusBox.className = "status-box";
+  statusBox.style.display = "none";
+  statusBox.textContent = "";
+
+  google.script.run
+    .withSuccessHandler(function(result){
+      submitBtn.disabled = false;
+      submitBtn.textContent = "送出我的旅遊需求";
+
+      statusBox.className = "status-box success";
+      statusBox.textContent = result && result.message
+        ? result.message
+        : "旅遊需求已成功送出！";
+
+      form.reset();
+    })
+    .withFailureHandler(function(error){
+      submitBtn.disabled = false;
+      submitBtn.textContent = "送出我的旅遊需求";
+
+      statusBox.className = "status-box error";
+      statusBox.textContent =
+        "送出失敗：" +
+        (error && error.message ? error.message : "請稍後再試。");
+    })
+    .saveTravelInquiry(formData);
+});
+</script>
+
+</body>
+</html>
