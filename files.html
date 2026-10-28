@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kevin Lee | 檔案下載 - PDF 與 Markdown 資源</title>
+  <meta name="description" content="Kevin Lee 的個人檔案下載中心。提供 ZeroMOQ 保密協議審查報告、簡報大綱與旅遊指南之 PDF 與 Markdown 格式下載。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 共用導覽列 (Navbar) -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon">K</div>
+        <div class="brand-meta">
+          <span class="brand-title">Kevin Lee</span>
+          <span class="brand-subtitle">Portfolio</span>
+        </div>
+      </a>
+
+      <!-- 導覽分頁項目 -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">首頁</a></li>
+        <li><a href="slides.html" class="nav-link">簡報區</a></li>
+        <li><a href="files.html" class="nav-link active">檔案下載</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="https://github.com/kevinlee-yongtek" target="_blank" rel="noopener" class="btn-github">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="切換選單">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- 檔案下載主要內容 -->
+  <main class="files-page">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-subtitle">Resource Center</div>
+        <h1 class="section-title">📁 檔案下載與資源專區</h1>
+        <p class="section-desc">收錄正式審查報告、簡報大綱與專案指南，提供 PDF 原檔與 Markdown 文字格式下載。</p>
+      </div>
+
+      <!-- 檔案列表 Grid -->
+      <div class="files-grid">
+        <!-- 檔案 1: PDF 原文文件 -->
+        <div class="file-card">
+          <div class="file-card-top">
+            <div class="file-format-badge badge-pdf">
+              <span>PDF</span>
+            </div>
+            <div class="file-meta-area">
+              <h3 class="file-title">ZeroMOQ 供應商保密協議 (NDA) 原文</h3>
+              <div class="file-specs">
+                <span>格式：PDF 文件</span>
+                <span>大小：166 KB</span>
+                <span>頁數：7 頁</span>
+              </div>
+            </div>
+          </div>
+          <p class="file-desc">
+            由印度 Qortxpro TechAdvisory (ZeroMOQ) 擬定之正式雙向保密合約草案（Non-Disclosure Agreement），包含國防出口管制與班加羅爾仲裁專章。
+          </p>
+          <div class="file-actions">
+            <a href="files/ZeroMOQ-Supplier-NDA.pdf" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+              線上在新分頁開啟 ↗
+            </a>
+            <a href="files/ZeroMOQ-Supplier-NDA.pdf" download="ZeroMOQ-Supplier-NDA.pdf" class="btn btn-primary btn-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              下載 PDF
+            </a>
+          </div>
+        </div>
+
+        <!-- 檔案 2: Markdown 審查報告 -->
+        <div class="file-card">
+          <div class="file-card-top">
+            <div class="file-format-badge badge-md">
+              <span>MD</span>
+            </div>
+            <div class="file-meta-area">
+              <h3 class="file-title">ZeroMOQ 供應商保密協議正式審查報告</h3>
+              <div class="file-specs">
+                <span>格式：Markdown (.md)</span>
+                <span>大小：5.9 KB</span>
+                <span>章節：4 大章</span>
+              </div>
+            </div>
+          </div>
+          <p class="file-desc">
+            結構化審查報告。深入剖析機密範疇界定、SCOMET 出口管制法規矩陣、累計 10 年長期責任存續期與境內外爭議解決因應建議。
+          </p>
+          <div class="file-actions">
+            <button class="btn btn-outline btn-sm" onclick="openPreview('report')">
+              線上預覽內容 👁️
+            </button>
+            <a href="files/ZeroMOQ-NDA-Review-Report.md" download="ZeroMOQ-NDA-Review-Report.md" class="btn btn-primary btn-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              下載 .md
+            </a>
+          </div>
+        </div>
+
+        <!-- 檔案 3: Markdown 簡報大綱 -->
+        <div class="file-card">
+          <div class="file-card-top">
+            <div class="file-format-badge badge-md">
+              <span>MD</span>
+            </div>
+            <div class="file-meta-area">
+              <h3 class="file-title">8 頁簡報大綱：ZeroMOQ NDA 重點分析</h3>
+              <div class="file-specs">
+                <span>格式：Markdown (.md)</span>
+                <span>大小：3.5 KB</span>
+                <span>投影片：8 頁</span>
+              </div>
+            </div>
+          </div>
+          <p class="file-desc">
+            針對 PPT 簡報製作之投影片骨幹大綱，每頁包含 1 個核心主標題與 3 個條列重點，適合作為內部報告演講與快速閱讀用。
+          </p>
+          <div class="file-actions">
+            <button class="btn btn-outline btn-sm" onclick="openPreview('slides')">
+              線上預覽內容 👁️
+            </button>
+            <a href="files/ZeroMOQ-NDA-Slides-Outline.md" download="ZeroMOQ-NDA-Slides-Outline.md" class="btn btn-primary btn-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              下載 .md
+            </a>
+          </div>
+        </div>
+
+        <!-- 檔案 4: Markdown 旅遊規劃指南 -->
+        <div class="file-card">
+          <div class="file-card-top">
+            <div class="file-format-badge badge-md">
+              <span>MD</span>
+            </div>
+            <div class="file-meta-area">
+              <h3 class="file-title">Portugal Select 葡萄牙深度旅遊規劃手冊</h3>
+              <div class="file-specs">
+                <span>格式：Markdown (.md)</span>
+                <span>天數：7 天 6 夜</span>
+                <span>景點：三大城區</span>
+              </div>
+            </div>
+          </div>
+          <p class="file-desc">
+            涵蓋里斯本歷史城區、辛特拉童話佩納宮、歐陸最西端羅卡角與波多杜羅河酒莊巡禮之行程推薦與票券交通攻略。
+          </p>
+          <div class="file-actions">
+            <button class="btn btn-outline btn-sm" onclick="openPreview('portugal')">
+              線上預覽內容 👁️
+            </button>
+            <a href="files/Portugal-Travel-Guide.md" download="Portugal-Travel-Guide.md" class="btn btn-primary btn-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              下載 .md
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 內容線上預覽彈窗 (Preview Modal) -->
+  <div class="modal-overlay" id="previewModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">文件內容預覽</h3>
+        <button class="modal-close" onclick="closePreview()" aria-label="關閉">✕</button>
+      </div>
+      <div class="modal-body">
+        <pre id="modalPreContent"></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 共用頁尾 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-brand-title">Kevin Lee · Portfolio</div>
+          <p class="footer-brand-desc">
+            提供專業合規審查、簡報大綱與專案文件下載，支援 Markdown 與 PDF 格式。
+          </p>
+        </div>
+        <div>
+          <h4 class="footer-col-title">分頁導航</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">首頁 (Home)</a></li>
+            <li><a href="slides.html">簡報區 (Presentations)</a></li>
+            <li><a href="files.html">檔案下載 (Downloads)</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">聯絡管道</h4>
+          <ul class="footer-links">
+            <li>Email: <a href="mailto:kevin.lee@yongtek.com">kevin.lee@yongtek.com</a></li>
+            <li>GitHub: <a href="https://github.com/kevinlee-yongtek" target="_blank" rel="noopener">kevinlee-yongtek</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 Kevin Lee. All rights reserved.</div>
+        <div>Designed with #0F9D8A & #0B3C5D · Powered by GitHub Pages</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 行動版漢堡選單切換
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+    }
+
+    // 預覽資料字典
+    const docPreviews = {
+      report: {
+        title: "ZeroMOQ 供應商保密協議正式審查報告 (Markdown 預覽)",
+        content: `# ZeroMOQ 供應商保密協議（Supplier NDA）正式審查報告
+
+> 受審文件：ZeroMOQ Supplier NDA.pdf  
+> 審查日期：2026 年 9 月 30 日  
+> 文件性質：供應商雙向保密協議（Non-Disclosure Agreement）  
+
+---
+
+## 摘要
+本報告針對印度 Qortxpro TechAdvisory Pvt Ltd（品牌代稱：ZeroMOQ）所擬定之《供應商保密協議》（Supplier NDA）進行深度法律審查。本合約訂立於 2026 年 5 月 10 日，雖採雙向保密架構，但實質高度著重於客戶端軍工國防與航太技術之保護。本審查旨在剖析協議之機密界定、印度 SCOMET 出口管制法規、長達 10 年之存續責任與班加羅爾專屬仲裁條款，協助供應商團隊精準掌握法律風險與履約重點。
+
+---
+
+## 第一章：協議主體架構與機密範疇界定
+本協議由印度班加羅爾之 Qortxpro TechAdvisory（ZeroMOQ）與合作供應商擬定，規範雙方於商業評估及產品採購期間之資訊交換。條款界定之機密範疇極為寬廣，除涵蓋軟體原始碼、演算法、製程工法、測試數據與商業財務報價外，更罕見地大量納入軍事應用、武器系統介面、航電系統（Avionics）與戰略國防資訊。此外，合約採嚴格之「無標註自動保護原則」，凡屬相關資訊無論是否標示機密皆受保護；同時，雙方洽談合作之存在與進度亦屬機密。
+
+---
+
+## 第二章：國防出口合規與嚴格技術禁令
+本協議第 4 條特別設立國防合規專章，要求接收方全面遵守印度國防採購法規與 SCOMET（特種化學品、生物、材料與技術）出口管制清單。條款明文限制受控技術跨國轉移，未經主管機關書面核准，嚴禁向任何外國公民（Foreign nationals）或境外實體提供存取權。在作業技術層面，第 3.3 條明訂禁止反向工程、反編譯、拆解或衍生改作；同時要求落實知情必要（Need-to-Know）分級授權，且一旦遭遇資料洩漏或網路資安威脅（Cyber incident），負有即時通報與配合防堵之法定義務。
+
+---
+
+## 第三章：合約存續效期與跨境法務救濟
+協議效力與法律爭議條款展現高度防禦性格局。合約基本效期為 5 年，雖得以 30 天書面通知提前終止，但第 8.1 條明定保密義務、國防合規與智財限制於約滿後繼續強制存續 5 年，使供應商實質承擔最長達 10 年之長期法律責任。違約救濟方面，雙方確認機密侵害具備不可回復之實質損害，賦予揭露方即時禁制令聲請權與律師費全額求償權。爭議解決依據印度《1996 年仲裁法》，指定仲裁地與專屬法院管轄皆位於印度班加羅爾，官方語言為英語。
+
+---
+
+## 結論與因應建議
+1. 團隊存取控管：針對 SCOMET 國防受控技術實施嚴密權限隔離。
+2. 數位資料生命週期：落實專案資料書面銷毀與留痕機制。
+3. 跨境爭議評估：審慎評估印度班加羅爾專屬仲裁管轄之後續法律成本。`
+      },
+      slides: {
+        title: "8 頁簡報大綱：ZeroMOQ NDA 重點分析 (Markdown 預覽)",
+        content: `# 8 頁簡報大綱：ZeroMOQ 供應商保密協議（NDA）重點分析
+
+> 來源文件：ZeroMOQ Supplier NDA.pdf  
+> 用途：PPT 簡報製作大綱（每頁 1 個主標題 + 3 個重點項目）  
+
+---
+
+### Slide 1：協議背景與基本架構
+* 簽署主體與性質：印度 Qortxpro TechAdvisory（ZeroMOQ）與合作供應商簽訂之雙向保密協議
+* 訂立時程與現況：訂立日期為 2026 年 5 月 10 日，目前為待雙方簽章生效之正式草案
+* 核心合作目的：規範雙方在評估商業合作、產品採購與技術交流期間之機密資訊保護
+
+### Slide 2：機密資訊範疇與界定原則
+* 涵蓋形式多元：包含口頭、書面、電子圖形、軟體原始碼、演算法、製程及商業報價數據
+* 自動保護機制：無論交付時是否特別加註「機密（Confidential）」字樣，皆一律納入保護
+* 溝通動態保密：雙方潛在合作洽談、交易進展、會議記錄及衍生研究報告均屬機密範疇
+
+### Slide 3：國防與航太特殊合規專章
+* 受控技術領域：嚴格涵蓋武器系統介面、航電系統（Avionics）、通訊及戰略國防系統
+* 印度法規合規：全面遵循印度特種化學品、生物、材料與技術（SCOMET）出口管制清單
+* 人員傳輸禁令：未經官方許可授權，嚴禁向任何外國公民（Foreign nationals）或境外實體提供存取權
+
+### Slide 4：接收方保密義務與技術禁令
+* 嚴格目的限制：資訊僅限於評估商業合作使用，落實知情必要（Need-to-Know）分級原則
+* 反向工程禁令：明文嚴格禁止複製、反編譯（Decompile）、拆解或進行逆向工程
+* 資安通報責任：一旦發現機密洩漏、誤用或遭遇網路資安事故（Cyber incident），須立即通知並配合補救
+
+### Slide 5：智慧財產權歸屬與保密例外
+* 零智財讓與：資訊揭露絕不構成專利、著作權、商標或技術製造權之授權或轉讓
+* 法定除外情事：已公開領域、揭露前已知或自合法第三方取得者，免受保密條款限制
+* 客觀獨立研發：主張未侵權者，需備妥完整書面紀錄證明未參考或接觸揭露方之機密資料
+
+### Slide 6：合約效期與超長存續條款
+* 主約有效年限：協議自生效日起有效期間為 5 年，任一方得提前 30 天以書面通知終止
+* 五年存續效力：合約終止或屆滿後，保密與國防出口合規義務繼續強制存續生效 5 年
+* 累計十年責任：供應商團隊實質需承擔累計最長達 10 年之長期資料保管與法規追蹤
+
+### Slide 7：違約救濟與跨境爭議管轄
+* 禁制令與假處分：雙方確認違約將產生不可回復之損害，揭露方有權聲請即時禁制令
+* 損失與費用求償：違約方需全額賠償直接損失、衍生責任及合理之律師訴訟費用
+* 印度專屬管轄：以印度法律為準據法，專屬仲裁與訴訟管轄地位於印度班加羅爾（Bangalore）
+
+### Slide 8：供應商簽約審查與因應建議
+* 團隊存取控管：若內部有跨國研發人員，應針對 SCOMET 國防受控技術建立權限隔離
+* 跨境爭議成本：評估若於印度班加羅爾進行仲裁與訴訟，可能產生之跨國法律維權成本
+* 文件銷毀與存檔：確認乙方公司法人抬頭無誤，並建立長期專案文件追蹤與銷毀機制`
+      },
+      portugal: {
+        title: "Portugal Select 葡萄牙旅遊規劃手冊 (Markdown 預覽)",
+        content: `# Portugal Select 葡萄牙深度旅遊規劃指南
+
+> 整理作者：Kevin Lee  
+> 適用區域：里斯本 (Lisbon)、波多 (Porto)、辛特拉 (Sintra)  
+> 建議天數：7 天 6 夜  
+
+---
+
+## 一、行程規劃建議
+
+### Day 1-3：里斯本歷史街區與貝倫區
+- 經典景點：熱羅尼莫斯修道院 (Jerónimos Monastery)、貝倫塔 (Belém Tower)、發現者紀念碑 (Padrão dos Descobrimentos)。
+- 深度體驗：搭乘經典 28 號黃色路面電車穿梭阿爾法瑪老城區 (Alfama)，聆聽法朵 (Fado) 傳統民謠。
+- 美食品嚐：創始店 Pastéis de Belém 正宗葡式蛋撻、海鮮銅鍋料理 (Cataplana)。
+
+### Day 4：辛特拉童話浪漫一日遊
+- 佩納宮 (Pena Palace)：19 世紀浪漫主義巔峰之作，色彩斑斕的童話宮殿。
+- 摩爾人城堡 (Castelo dos Mouros)：登高俯瞰辛特拉山脈與大西洋海岸線。
+- 羅卡角 (Cabo da Roca)：「陸止於此，海始於斯」—— 歐陸最西端打卡。
+
+### Day 5-7：波多杜羅河畔與酒莊巡禮
+- 杜羅河畔 (Ribeira)：漫步河岸彩色房舍，穿過路易一世大橋 (Dom Luís I Bridge)。
+- 波特酒莊巡禮：走訪加亞新城 (Vila Nova de Gaia)，品飲波特酒歷史風味。
+- 文化地標：聖本篤車站 (São Bento) 兩萬片藍白磁磚壁畫、萊羅書店 (Livraria Lello)。
+
+---
+
+## 二、實用旅遊須知
+1. 交通票券：里斯本推薦購買 Viva Viagem 24 小時交通卡；波多推薦 Andante 卡。
+2. 最佳旅遊月份：4 月至 6 月、9 月至 10 月氣候溫和舒適，避開盛夏酷暑與旺季人潮。
+3. 退稅須知：葡萄牙增值稅 (IVA) 標準稅率為 23%，同一商店單筆消費達門檻即可索取退稅單。`
+      }
+    };
+
+    function openPreview(key) {
+      const doc = docPreviews[key];
+      if (doc) {
+        document.getElementById('modalTitle').textContent = doc.title;
+        document.getElementById('modalPreContent').textContent = doc.content;
+        document.getElementById('previewModal').classList.add('active');
+      }
+    }
+
+    function closePreview() {
+      document.getElementById('previewModal').classList.remove('active');
+    }
+
+    document.getElementById('previewModal').addEventListener('click', (e) => {
+      if (e.target.id === 'previewModal') {
+        closePreview();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closePreview();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,5 +1,10 @@
-# 忽略個人與報告文件，避免公開上傳
-*.pdf
+# 忽略根目錄草稿與非網頁檔案
+/report.md
+/report.pptx
+/slides.md
+/ZeroMOQ Supplier NDA.pdf
 *.pptx
-*.md
-slides.html
+*.tmp
+*.log
+.DS_Store
+Thumbs.db

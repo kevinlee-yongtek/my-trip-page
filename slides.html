@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kevin Lee | 簡報區 - 商業與技術簡報</title>
+  <meta name="description" content="Kevin Lee 的個人簡報中心。線上互動式簡報、法務合規審查與專案企劃簡報展示。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 共用導覽列 (Navbar) -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon">K</div>
+        <div class="brand-meta">
+          <span class="brand-title">Kevin Lee</span>
+          <span class="brand-subtitle">Portfolio</span>
+        </div>
+      </a>
+
+      <!-- 導覽分頁項目 -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">首頁</a></li>
+        <li><a href="slides.html" class="nav-link active">簡報區</a></li>
+        <li><a href="files.html" class="nav-link">檔案下載</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="https://github.com/kevinlee-yongtek" target="_blank" rel="noopener" class="btn-github">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="切換選單">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- 簡報頁面主要內容 -->
+  <main class="slides-page">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-subtitle">Presentations Portal</div>
+        <h1 class="section-title">📊 簡報展示區</h1>
+        <p class="section-desc">透過互動式投影片瀏覽商務合規審查、專案分析與國際策劃簡報。</p>
+      </div>
+
+      <!-- 線上互動簡報播放器 -->
+      <section class="slide-deck-wrapper" id="deckContainer">
+        <div class="deck-topbar">
+          <div class="deck-title-area">
+            <span class="badge badge-primary">現正播放</span>
+            <div class="deck-title-text" id="deckMetaTitle">ZeroMOQ 供應商保密協議（NDA）重點審查</div>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-outline-white btn-sm" id="fullscreenBtn" title="全螢幕">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+              </svg>
+              全螢幕
+            </button>
+          </div>
+        </div>
+
+        <!-- 投影片舞台 -->
+        <div class="deck-stage" id="deckStage">
+          <div class="slide-num-tag" id="slideTag">SLIDE 01 / 08 · 背景與架構</div>
+          <h2 class="slide-heading" id="slideTitle">協議背景與基本架構</h2>
+          <div class="slide-points" id="slidePoints">
+            <!-- 動態填入 -->
+          </div>
+        </div>
+
+        <!-- 播放控制列 -->
+        <div class="deck-controls">
+          <div class="deck-counter">
+            <span id="currentSlideNum">01</span> / <span id="totalSlideNum">08</span>
+          </div>
+          <div class="deck-btns">
+            <button class="deck-btn" id="prevSlideBtn" disabled>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+              上一頁 (←)
+            </button>
+            <button class="deck-btn" id="nextSlideBtn">
+              下一頁 (→)
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 所有簡報列表 (Grid of all presentations) -->
+      <section>
+        <div style="margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between;">
+          <h2 style="color: var(--secondary); font-size: 1.5rem; font-weight: 700;">所有簡報系列清單</h2>
+          <span class="badge badge-secondary">共 4 份簡報</span>
+        </div>
+
+        <div class="pinned-grid">
+          <!-- 簡報 1 -->
+          <div class="project-card">
+            <div class="project-banner" style="height: 140px; background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);">
+              <div class="project-banner-icon" style="font-size: 2rem;">🛡️</div>
+              <h3 style="font-size: 1.1rem;">ZeroMOQ 供應商保密協議審查</h3>
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="badge badge-primary">8 頁簡報</span>
+                <span class="badge badge-secondary">法規合規</span>
+              </div>
+              <p class="project-desc">
+                雙向保密架構、印度 SCOMET 出口管制法規、10 年存續義務與班加羅爾仲裁應對方針。
+              </p>
+              <div class="project-footer">
+                <button class="btn btn-primary btn-sm" onclick="loadPresentation(0)">
+                  在上方播放
+                </button>
+                <a href="files/ZeroMOQ-NDA-Slides-Outline.md" download class="btn btn-outline btn-sm">
+                  下載大綱 .md
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 簡報 2 -->
+          <div class="project-card">
+            <div class="project-banner" style="height: 140px; background: linear-gradient(135deg, #0e4c6e 0%, #3ee1cc 100%);">
+              <div class="project-banner-icon" style="font-size: 2rem;">🇵🇹</div>
+              <h3 style="font-size: 1.1rem;">Portugal Select 深度行程策劃</h3>
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="badge badge-primary">12 頁簡報</span>
+                <span class="badge badge-secondary">旅遊專案</span>
+              </div>
+              <p class="project-desc">
+                里斯本、辛特拉與波多杜羅河酒莊深度遊。包含交通路線安排、預算控管與推薦住宿評估。
+              </p>
+              <div class="project-footer">
+                <button class="btn btn-primary btn-sm" onclick="loadPresentation(1)">
+                  在上方播放
+                </button>
+                <a href="files/Portugal-Travel-Guide.md" download class="btn btn-outline btn-sm">
+                  下載指南 .md
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 簡報 3 -->
+          <div class="project-card">
+            <div class="project-banner" style="height: 140px; background: linear-gradient(135deg, #07263b 0%, #164e72 100%);">
+              <div class="project-banner-icon" style="font-size: 2rem;">🌐</div>
+              <h3 style="font-size: 1.1rem;">跨國供應鏈出口管制實務</h3>
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="badge badge-primary">10 頁簡報</span>
+                <span class="badge badge-secondary">貿易出口管制</span>
+              </div>
+              <p class="project-desc">
+                分析高階硬體晶片、航電系統與國際敏感物資移轉程序，建立企業內部知情必要分級授權機制。
+              </p>
+              <div class="project-footer">
+                <button class="btn btn-primary btn-sm" onclick="loadPresentation(2)">
+                  在上方播放
+                </button>
+                <a href="files.html" class="btn btn-outline btn-sm">
+                  相關檔案
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 簡報 4 -->
+          <div class="project-card">
+            <div class="project-banner" style="height: 140px; background: linear-gradient(135deg, #0f4c5c 0%, #0F9D8A 100%);">
+              <div class="project-banner-icon" style="font-size: 2rem;">🤝</div>
+              <h3 style="font-size: 1.1rem;">商業 NDA 談判避坑指南</h3>
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="badge badge-primary">6 頁簡報</span>
+                <span class="badge badge-secondary">商務談判</span>
+              </div>
+              <p class="project-desc">
+                拆解外商保密合約常見之陷阱：無上限賠償責任、單向保密、苛刻獨立研發舉證責任之談判實務。
+              </p>
+              <div class="project-footer">
+                <button class="btn btn-primary btn-sm" onclick="loadPresentation(3)">
+                  在上方播放
+                </button>
+                <a href="files.html" class="btn btn-outline btn-sm">
+                  檔案下載
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- 共用頁尾 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-brand-title">Kevin Lee · Portfolio</div>
+          <p class="footer-brand-desc">
+            以互動式視覺化方式呈現深度商務法規審查與專案企劃成果。
+          </p>
+        </div>
+        <div>
+          <h4 class="footer-col-title">分頁導航</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">首頁 (Home)</a></li>
+            <li><a href="slides.html">簡報區 (Presentations)</a></li>
+            <li><a href="files.html">檔案下載 (Downloads)</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">聯絡管道</h4>
+          <ul class="footer-links">
+            <li>Email: <a href="mailto:kevin.lee@yongtek.com">kevin.lee@yongtek.com</a></li>
+            <li>GitHub: <a href="https://github.com/kevinlee-yongtek" target="_blank" rel="noopener">kevinlee-yongtek</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 Kevin Lee. All rights reserved.</div>
+        <div>Designed with #0F9D8A & #0B3C5D · Powered by GitHub Pages</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 行動版漢堡選單切換
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+    }
+
+    // 簡報資料庫
+    const presentations = [
+      {
+        title: "ZeroMOQ 供應商保密協議（NDA）重點審查",
+        slides: [
+          {
+            tag: "SLIDE 01 / 08 · 協議背景與基本架構",
+            title: "協議背景與基本架構",
+            points: [
+              "簽署主體與性質：印度 Qortxpro TechAdvisory（ZeroMOQ）與合作供應商簽訂之雙向保密協議",
+              "訂立時程與現況：訂立日期為 2026 年 5 月 10 日，目前為待雙方簽章生效之正式草案",
+              "核心合作目的：規範雙方在評估商業合作、產品採購與技術交流期間之機密資訊保護"
+            ]
+          },
+          {
+            tag: "SLIDE 02 / 08 · 機密資訊界定",
+            title: "機密資訊範疇與界定原則",
+            points: [
+              "涵蓋形式多元：包含口頭、書面、電子圖形、軟體原始碼、演算法、製程及商業報價數據",
+              "自動保護機制：無論交付時是否特別加註「機密（Confidential）」字樣，皆一律納入保護",
+              "溝通動態保密：雙方潛在合作洽談、交易進展、會議記錄及衍生研究報告均屬機密範疇"
+            ]
+          },
+          {
+            tag: "SLIDE 03 / 08 · 國防合規專章",
+            title: "國防與航太特殊合規專章",
+            points: [
+              "受控技術領域：嚴格涵蓋武器系統介面、航電系統（Avionics）、通訊及戰略國防系統",
+              "印度法規合規：全面遵循印度特種化學品、生物、材料與技術（SCOMET）出口管制清單",
+              "人員傳輸禁令：未經官方許可授權，嚴禁向任何外國公民（Foreign nationals）或境外實體提供存取權"
+            ]
+          },
+          {
+            tag: "SLIDE 04 / 08 · 保密義務與禁令",
+            title: "接收方保密義務與技術禁令",
+            points: [
+              "嚴格目的限制：資訊僅限於評估商業合作使用，落實知情必要（Need-to-Know）分級原則",
+              "反向工程禁令：明文嚴格禁止複製、反編譯（Decompile）、拆解或進行逆向工程",
+              "資安通報責任：一旦發現機密洩漏、誤用或遭遇網路資安事故（Cyber incident），須立即通知並配合補救"
+            ]
+          },
+          {
+            tag: "SLIDE 05 / 08 · 智財與保密例外",
+            title: "智慧財產權歸屬與保密例外",
+            points: [
+              "零智財讓與：資訊揭露絕不構成專利、著作權、商標或技術製造權之授權或轉讓",
+              "法定除外情事：已公開領域、揭露前已知或自合法第三方取得者，免受保密條款限制",
+              "客觀獨立研發：主張未侵權者，需備妥完整書面紀錄證明未參考或接觸揭露方之機密資料"
+            ]
+          },
+          {
+            tag: "SLIDE 06 / 08 · 合約效期與存續",
+            title: "合約效期與超長存續條款",
+            points: [
+              "主約有效年限：協議自生效日起有效期間為 5 年，任一方得提前 30 天以書面通知終止",
+              "五年存續效力：合約終止或屆滿後，保密與國防出口合規義務繼續強制存續生效 5 年",
+              "累計十年責任：供應商團隊實質需承擔累計最長達 10 年之長期資料保管與法規追蹤"
+            ]
+          },
+          {
+            tag: "SLIDE 07 / 08 · 救濟與爭議管轄",
+            title: "違約救濟與跨境爭議管轄",
+            points: [
+              "禁制令與假處分：雙方確認違約將產生不可回復之損害，揭露方有權聲請即時禁制令",
+              "損失與費用求償：違約方需全額賠償直接損失、衍生責任及合理之律師訴訟費用",
+              "印度專屬管轄：以印度法律為準據法，專屬仲裁與訴訟管轄地位於印度班加羅爾（Bangalore）"
+            ]
+          },
+          {
+            tag: "SLIDE 08 / 08 · 簽約審查與建議",
+            title: "供應商簽約審查與因應建議",
+            points: [
+              "團隊存取控管：若內部有跨國研發人員，應針對 SCOMET 國防受控技術建立權限隔離",
+              "跨境爭議成本：評估若於印度班加羅爾進行仲裁與訴訟，可能產生之跨國法律維權成本",
+              "文件銷毀與存檔：確認乙方公司法人抬頭無誤，並建立長期專案文件追蹤與銷毀機制"
+            ]
+          }
+        ]
+      },
+      {
+        title: "Portugal Select 深度行程策劃簡報",
+        slides: [
+          {
+            tag: "SLIDE 01 / 03 · 里斯本核心亮點",
+            title: "里斯本：歷史古韻與現代漫步",
+            points: [
+              "文化地標巡禮：熱羅尼莫斯修道院、貝倫塔、發現者紀念碑與正宗百年蛋撻創始店",
+              "老城交通特色：28 號黃色路面電車穿梭阿爾法瑪老城區，俯瞰特茹河迷人景致",
+              "夜生活與餐飲：夜間走入傳統酒館聆聽法朵 (Fado) 哀愁歌聲，品嚐海鮮銅鍋料理"
+            ]
+          },
+          {
+            tag: "SLIDE 02 / 03 · 辛特拉童話秘境",
+            title: "辛特拉與歐陸最西端羅卡角",
+            points: [
+              "佩納宮 (Pena Palace)：19 世紀浪漫主義色彩斑斕宮殿與幽深森林花園",
+              "摩爾人城堡 (Castelo dos Mouros)：矗立山巔俯瞰辛特拉山脈全景與大西洋",
+              "羅卡角 (Cabo da Roca)：「陸止於此，海始於斯」，歐陸最西端的日落絕景"
+            ]
+          },
+          {
+            tag: "SLIDE 03 / 03 · 波多酒香與文化",
+            title: "波多杜羅河畔與世界級酒莊",
+            points: [
+              "路易一世大橋：雙層鐵橋橫跨杜羅河，連通波多市區與加亞新城酒莊區",
+              "藍白磁磚工藝：聖本篤火車站兩萬片 Azulejo 手繪磁磚重現葡萄牙歷史風華",
+              "波特酒巡禮：走訪世紀歷史酒窖，品飲陳年紅寶石與茶色波特酒甘美風味"
+            ]
+          }
+        ]
+      },
+      {
+        title: "跨國供應鏈出口管制實務簡報",
+        slides: [
+          {
+            tag: "SLIDE 01 / 02 · 出口管制架構",
+            title: "國際出口管制與軍民兩用物資",
+            points: [
+              "多邊管制體系：瓦聖納協定、飛彈技術管制制度 (MTCR) 與各國出口管制法",
+              "知情必要原則：建立研發團隊、協力廠商與海外夥伴之受控技術傳輸審批程序",
+              "違規嚴重後果：民事罰鍰、刑事責任與全球出口授權撤銷之重大營運風險"
+            ]
+          },
+          {
+            tag: "SLIDE 02 / 02 · 企業內部防護",
+            title: "企業內部合規與審查流程建立",
+            points: [
+              "物資清單分級：針對高頻寬晶片、航電介面與加密演算法建立內部 ECCN / SCOMET 標記",
+              "客戶端身分審查 (KYC)：實施最終使用者與最終用途聲明 (End-User Statement) 驗證",
+              "數位足跡留存：簽約談判動態、技術揭露清單與伺服器存取紀錄強制封存保管"
+            ]
+          }
+        ]
+      },
+      {
+        title: "商業 NDA 談判避坑指南",
+        slides: [
+          {
+            tag: "SLIDE 01 / 02 · 核心陷阱剖析",
+            title: "跨國保密合約五大高風險條款",
+            points: [
+              "單向 vs. 雙向保密失衡：乙方承擔嚴格義務，甲方卻免除對等保密拘束",
+              "無期限或超長存續責任：注意合約終止後持續 5 年以上甚至永久之存續陷阱",
+              "苛刻的獨立研發舉證責任：未明確約定客觀書面舉證標準，極易陷入侵權指控"
+            ]
+          },
+          {
+            tag: "SLIDE 02 / 02 · 談判修改建議",
+            title: "實用談判防禦與修改策略",
+            points: [
+              "堅持改為雙向對等：凡涉及技術交流，一律爭取互為揭露方與接收方之同等權利",
+              "縮短存續期至 2~3 年：符合一般商務談判慣例，避免無窮盡之歷史保管責任",
+              "爭取中立管轄地：盡量約定中立第三國仲裁（如新加坡 SIAC 或香港 HKIAC）"
+            ]
+          }
+        ]
+      }
+    ];
+
+    let currentDeckIdx = 0;
+    let currentSlideIdx = 0;
+
+    const deckStage = document.getElementById('deckStage');
+    const deckMetaTitle = document.getElementById('deckMetaTitle');
+    const slideTag = document.getElementById('slideTag');
+    const slideTitle = document.getElementById('slideTitle');
+    const slidePoints = document.getElementById('slidePoints');
+    const currentSlideNum = document.getElementById('currentSlideNum');
+    const totalSlideNum = document.getElementById('totalSlideNum');
+    const prevSlideBtn = document.getElementById('prevSlideBtn');
+    const nextSlideBtn = document.getElementById('nextSlideBtn');
+
+    function renderSlide() {
+      const currentDeck = presentations[currentDeckIdx];
+      const slide = currentDeck.slides[currentSlideIdx];
+
+      deckMetaTitle.textContent = currentDeck.title;
+      slideTag.textContent = slide.tag;
+      slideTitle.textContent = slide.title;
+
+      slidePoints.innerHTML = '';
+      slide.points.forEach(pt => {
+        const div = document.createElement('div');
+        div.className = 'slide-point';
+        div.innerHTML = `<span class="point-dot"></span><span>${pt}</span>`;
+        slidePoints.appendChild(div);
+      });
+
+      const pad = (n) => String(n).padStart(2, '0');
+      currentSlideNum.textContent = pad(currentSlideIdx + 1);
+      totalSlideNum.textContent = pad(currentDeck.slides.length);
+
+      prevSlideBtn.disabled = (currentSlideIdx === 0);
+      nextSlideBtn.disabled = (currentSlideIdx === currentDeck.slides.length - 1);
+    }
+
+    function prevSlide() {
+      if (currentSlideIdx > 0) {
+        currentSlideIdx--;
+        renderSlide();
+      }
+    }
+
+    function nextSlide() {
+      const currentDeck = presentations[currentDeckIdx];
+      if (currentSlideIdx < currentDeck.slides.length - 1) {
+        currentSlideIdx++;
+        renderSlide();
+      }
+    }
+
+    function loadPresentation(index) {
+      if (index >= 0 && index < presentations.length) {
+        currentDeckIdx = index;
+        currentSlideIdx = 0;
+        renderSlide();
+        document.getElementById('deckContainer').scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    prevSlideBtn.addEventListener('click', prevSlide);
+    nextSlideBtn.addEventListener('click', nextSlide);
+
+    // 鍵盤左右鍵快捷播放
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        prevSlide();
+      }
+    });
+
+    // 全螢幕切換
+    document.getElementById('fullscreenBtn').addEventListener('click', () => {
+      const container = document.getElementById('deckContainer');
+      if (!document.fullscreenElement) {
+        container.requestFullscreen().catch(err => alert(err.message));
+      } else {
+        document.exitFullscreen();
+      }
+    });
+
+    // 初始化渲染
+    renderSlide();
+  </script>
+</body>
+</html>
