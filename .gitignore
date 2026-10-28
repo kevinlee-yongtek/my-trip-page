@@ -1,0 +1,5 @@
+# 忽略個人與報告文件，避免公開上傳
+*.pdf
+*.pptx
+*.md
+slides.html

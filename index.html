@@ -8,19 +8,74 @@
   <title>Portugal Select｜葡萄牙深度旅遊規劃</title>
 
   <style>
-    :root{
-      --navy:#12304a;
-      --navy2:#0c2639;
-      --blue:#2d6f92;
-      --cream:#f8f5ee;
-      --sand:#d8b36a;
-      --orange:#c86538;
-      --text:#1d2933;
-      --muted:#667782;
-      --white:#fff;
-      --line:#dce5e8;
-      --sky:#eaf4f7;
-      --shadow:0 18px 48px rgba(18,48,74,.12);
+    /* ========== 配色主題定義 ========== */
+    :root, [data-theme="mediterranean"] {
+      --navy: #0e2038;
+      --navy2: #081324;
+      --blue: #1d5ca8;
+      --cream: #faf9f5;
+      --bg-subtle: #f1eee7;
+      --sand: #cf9b52;
+      --orange: #ce5a33;
+      --text: #19232d;
+      --muted: #5e6f7e;
+      --white: #ffffff;
+      --line: #e2e8f0;
+      --sky: #edf4fa;
+      --shadow: 0 16px 36px rgba(14,32,56,0.08);
+      --card-shadow: 0 12px 32px -8px rgba(14,32,56,0.08);
+      --card-shadow-hover: 0 20px 42px -6px rgba(14,32,56,0.14);
+      --topbar-bg: rgba(250, 249, 245, 0.92);
+      --hero-overlay: linear-gradient(90deg, rgba(8,19,36,0.92) 0%, rgba(8,19,36,0.64) 55%, rgba(8,19,36,0.18) 100%);
+      --accent-badge: #1d5ca8;
+      --accent-badge-bg: #e8f1fb;
+      --gold-accent: #e5b974;
+    }
+
+    [data-theme="azulejo"] {
+      --navy: #0a1f3d;
+      --navy2: #051020;
+      --blue: #0259b8;
+      --cream: #f8fafc;
+      --bg-subtle: #edf2f8;
+      --sand: #d49f3d;
+      --orange: #d45b2b;
+      --text: #0f1926;
+      --muted: #596b82;
+      --white: #ffffff;
+      --line: #d8e3ef;
+      --sky: #e6f0fa;
+      --shadow: 0 16px 36px rgba(10,31,61,0.08);
+      --card-shadow: 0 12px 32px -8px rgba(10,31,61,0.08);
+      --card-shadow-hover: 0 20px 42px -6px rgba(10,31,61,0.15);
+      --topbar-bg: rgba(248, 250, 252, 0.92);
+      --hero-overlay: linear-gradient(90deg, rgba(6,16,33,0.92) 0%, rgba(6,16,33,0.65) 55%, rgba(6,16,33,0.2) 100%);
+      --accent-badge: #0259b8;
+      --accent-badge-bg: #e0ecfa;
+      --gold-accent: #f0c56b;
+    }
+
+    [data-theme="quiet-luxury"] {
+      --navy: #181d1b;
+      --navy2: #0e1210;
+      --blue: #3d544b;
+      --cream: #f7f5f0;
+      --bg-subtle: #eae6de;
+      --sand: #b89158;
+      --orange: #b35e3b;
+      --text: #1f2422;
+      --muted: #666c68;
+      --white: #ffffff;
+      --line: #dfdad0;
+      --sky: #ebeee9;
+      --shadow: 0 16px 36px rgba(24,29,27,0.08);
+      --card-shadow: 0 12px 32px -8px rgba(24,29,27,0.08);
+      --card-shadow-hover: 0 20px 42px -6px rgba(24,29,27,0.13);
+      --topbar-bg: rgba(247, 245, 240, 0.92);
+      --hero-overlay: linear-gradient(90deg, rgba(14,18,16,0.94) 0%, rgba(14,18,16,0.68) 55%, rgba(14,18,16,0.22) 100%);
+      --accent-badge: #385249;
+      --accent-badge-bg: #e2e8e3;
+      --gold-accent: #deb57b;
     }
 
     *{box-sizing:border-box}
@@ -32,6 +87,7 @@
       background:var(--cream);
       color:var(--text);
       line-height:1.7;
+      transition:background-color .3s ease, color .3s ease;
     }
 
     a{text-decoration:none;color:inherit}
@@ -46,9 +102,52 @@
       justify-content:space-between;
       align-items:center;
       padding:15px clamp(20px,5vw,70px);
-      background:rgba(248,245,238,.94);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(18,48,74,.08);
+      background:var(--topbar-bg);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--line);
+      transition:background-color .3s ease, border-color .3s ease;
+    }
+
+    .topbar-actions{
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
+
+    .theme-switcher{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:rgba(255,255,255,.88);
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:5px 12px;
+      box-shadow:0 2px 8px rgba(0,0,0,.04);
+      transition:all .2s ease;
+    }
+
+    .theme-switcher:hover{
+      border-color:var(--sand);
+      box-shadow:0 4px 12px rgba(0,0,0,.08);
+      background:#fff;
+    }
+
+    .theme-icon{
+      font-size:13px;
+      line-height:1;
+    }
+
+    .theme-select{
+      border:0;
+      background:transparent;
+      font-size:12px;
+      font-weight:800;
+      color:var(--navy);
+      padding:0;
+      cursor:pointer;
+      outline:none;
+      width:auto;
     }
 
     .brand{
@@ -58,6 +157,7 @@
       color:var(--navy);
       font-weight:900;
       letter-spacing:.05em;
+      transition:color .3s ease;
     }
 
     .brand-mark{
@@ -68,6 +168,8 @@
       place-items:center;
       background:linear-gradient(135deg,var(--navy),var(--blue));
       color:#fff;
+      box-shadow:0 4px 10px rgba(0,0,0,.15);
+      transition:all .3s ease;
     }
 
     nav{
@@ -75,16 +177,23 @@
       gap:22px;
       font-size:14px;
       font-weight:800;
-      color:#425864;
+      color:var(--muted);
     }
 
+    nav a{transition:color .2s ease}
     nav a:hover{color:var(--orange)}
 
     .nav-cta{
-      padding:8px 14px;
+      padding:8px 16px;
       border-radius:999px;
       background:var(--navy);
       color:#fff!important;
+      transition:all .2s ease;
+    }
+
+    .nav-cta:hover{
+      background:var(--orange);
+      transform:translateY(-1px);
     }
 
     .hero{
@@ -94,7 +203,7 @@
       align-items:end;
       color:#fff;
       background:
-        linear-gradient(90deg,rgba(9,28,42,.88),rgba(9,28,42,.50) 52%,rgba(9,28,42,.14)),
+        var(--hero-overlay),
         url("https://commons.wikimedia.org/wiki/Special:FilePath/Bel%C3%A9m_Tower_in_Lisbon.jpg") center/cover no-repeat;
       overflow:hidden;
     }
@@ -107,6 +216,7 @@
       bottom:0;
       height:140px;
       background:linear-gradient(transparent,var(--cream));
+      transition:background .3s ease;
     }
 
     .hero-content{
@@ -121,7 +231,7 @@
       letter-spacing:.18em;
       font-size:12px;
       font-weight:900;
-      color:#efd19a;
+      color:var(--gold-accent);
       margin-bottom:14px;
     }
 
@@ -131,14 +241,16 @@
 
     .hero h1{
       font-size:clamp(46px,7vw,84px);
-      line-height:1.03;
+      line-height:1.05;
       margin:0 0 18px;
+      letter-spacing:-.01em;
     }
 
     .hero p{
       font-size:clamp(17px,2vw,21px);
       color:#eef5f7;
       max-width:690px;
+      text-shadow:0 1px 3px rgba(0,0,0,.25);
     }
 
     .hero-actions{
@@ -151,18 +263,43 @@
     .btn{
       border:0;
       border-radius:999px;
-      padding:13px 19px;
+      padding:13px 22px;
       font-weight:900;
       cursor:pointer;
-      transition:.2s ease;
+      transition:all .25s ease;
     }
 
-    .btn:hover{transform:translateY(-1px)}
+    .btn:hover{transform:translateY(-2px)}
     .btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
 
-    .btn-primary{background:var(--sand);color:#172631}
-    .btn-light{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.34);color:#fff}
-    .btn-dark{background:var(--navy);color:#fff}
+    .btn-primary{
+      background:linear-gradient(135deg, var(--sand), color-mix(in srgb, var(--sand) 82%, #000));
+      color:#fff;
+      box-shadow:0 6px 18px -4px rgba(0,0,0,.18);
+    }
+    .btn-primary:hover{
+      box-shadow:0 8px 24px -4px rgba(0,0,0,.26);
+    }
+
+    .btn-light{
+      background:rgba(255,255,255,.16);
+      border:1px solid rgba(255,255,255,.36);
+      color:#fff;
+      backdrop-filter:blur(8px);
+    }
+    .btn-light:hover{
+      background:rgba(255,255,255,.24);
+      border-color:rgba(255,255,255,.6);
+    }
+
+    .btn-dark{
+      background:var(--navy);
+      color:#fff;
+      box-shadow:0 6px 18px -4px rgba(0,0,0,.18);
+    }
+    .btn-dark:hover{
+      background:var(--blue);
+    }
 
     .container{
       width:min(1180px,calc(100% - 36px));
@@ -202,17 +339,23 @@
     .city-tab{
       background:#fff;
       border:1px solid var(--line);
-      padding:10px 16px;
+      padding:10px 18px;
       border-radius:999px;
       font-weight:900;
       color:var(--navy);
       cursor:pointer;
+      transition:all .2s ease;
+    }
+
+    .city-tab:hover{
+      border-color:var(--navy);
     }
 
     .city-tab.active{
       background:var(--navy);
       color:#fff;
       border-color:var(--navy);
+      box-shadow:0 4px 14px rgba(0,0,0,.15);
     }
 
     .city-intro{
@@ -227,6 +370,7 @@
       border:1px solid var(--line);
       border-radius:22px;
       padding:27px;
+      box-shadow:var(--card-shadow);
     }
 
     .city-copy h3{
@@ -268,14 +412,25 @@
       border:1px solid var(--line);
       border-radius:22px;
       overflow:hidden;
-      box-shadow:var(--shadow);
+      box-shadow:var(--card-shadow);
+      transition:transform .28s cubic-bezier(.16,1,.3,1), box-shadow .28s cubic-bezier(.16,1,.3,1);
+    }
+
+    .place-card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--card-shadow-hover);
     }
 
     .place-photo{
       width:100%;
       height:310px;
-      object-fit:contain;
-      background:#e1e9ec;
+      object-fit:cover;
+      background:var(--sky);
+      transition:transform .4s ease;
+    }
+
+    .place-card:hover .place-photo{
+      transform:scale(1.02);
     }
 
     .place-body{padding:25px}
@@ -294,13 +449,14 @@
     }
 
     .badge{
-      background:var(--sky);
-      color:var(--blue);
+      background:var(--accent-badge-bg);
+      color:var(--accent-badge);
       font-size:12px;
       font-weight:900;
-      padding:6px 10px;
+      padding:6px 12px;
       border-radius:999px;
       white-space:nowrap;
+      letter-spacing:.02em;
     }
 
     .place-summary{color:var(--muted)}
@@ -315,7 +471,7 @@
     .facts{display:grid;gap:11px}
 
     .fact{
-      border-left:3px solid var(--sand);
+      border-left:3px solid var(--orange);
       padding-left:12px;
     }
 
@@ -338,14 +494,17 @@
       background:#e7edef;
     }
 
-    .planner-section{background:#f0eadf}
+    .planner-section{
+      background:var(--bg-subtle);
+      transition:background-color .3s ease;
+    }
 
     .planner-shell{
       background:linear-gradient(135deg,var(--navy2),var(--navy));
       border-radius:30px;
       padding:clamp(24px,4vw,42px);
       color:#fff;
-      box-shadow:0 24px 60px rgba(9,34,50,.2);
+      box-shadow:0 24px 60px rgba(9,24,42,.22);
     }
 
     .planner-top{
@@ -378,6 +537,7 @@
       color:var(--text);
       border-radius:21px;
       padding:24px;
+      box-shadow:var(--card-shadow);
     }
 
     .field{margin-bottom:19px}
@@ -405,11 +565,14 @@
       background:#fbfcfc;
       padding:10px 11px;
       cursor:pointer;
+      transition:border-color .2s ease;
     }
+
+    .check:hover{border-color:var(--sand)}
 
     .check input{
       width:auto;
-      accent-color:var(--navy);
+      accent-color:var(--orange);
     }
 
     .row2{
@@ -426,11 +589,12 @@
       background:#fff;
       color:var(--text);
       outline:none;
+      transition:border-color .2s ease, box-shadow .2s ease;
     }
 
     input:focus,select:focus{
-      border-color:#7ba2b6;
-      box-shadow:0 0 0 3px rgba(45,111,146,.1);
+      border-color:var(--blue);
+      box-shadow:0 0 0 3px rgba(29,92,168,.12);
     }
 
     .submit-wide{width:100%}
@@ -457,6 +621,7 @@
       border-radius:14px;
       padding:14px 15px;
       margin-bottom:11px;
+      background:#fff;
     }
 
     .day-card h4{
@@ -515,8 +680,8 @@
       display:grid;
       place-items:center;
       border-radius:50%;
-      background:rgba(216,179,106,.18);
-      color:#f0d19a;
+      background:rgba(206,90,51,.2);
+      color:var(--gold-accent);
       flex:none;
     }
 
@@ -591,7 +756,10 @@
       margin:11px 0 0;
     }
 
-    .food-band{background:#efe7d7}
+    .food-band{
+      background:var(--bg-subtle);
+      transition:background-color .3s ease;
+    }
 
     .food-grid{
       display:grid;
@@ -601,9 +769,16 @@
 
     .food-card{
       background:#fff;
-      border:1px solid #e2d6bf;
+      border:1px solid var(--line);
       border-radius:18px;
-      padding:23px;
+      padding:24px;
+      box-shadow:var(--card-shadow);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+
+    .food-card:hover{
+      transform:translateY(-3px);
+      box-shadow:var(--card-shadow-hover);
     }
 
     .food-card h3{
@@ -628,7 +803,14 @@
       background:#fff;
       border:1px solid var(--line);
       border-radius:17px;
-      padding:19px;
+      padding:20px;
+      box-shadow:0 4px 16px rgba(0,0,0,.03);
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+
+    .tip:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--card-shadow);
     }
 
     .tip strong{
@@ -643,20 +825,24 @@
     }
 
     footer{
-      background:#0e2638;
-      color:#cbd9df;
-      padding:33px clamp(20px,5vw,70px);
+      background:var(--navy2);
+      color:#9fb4c4;
+      padding:36px clamp(20px,5vw,70px);
       font-size:13px;
       display:flex;
       justify-content:space-between;
+      align-items:center;
       gap:18px;
       flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.06);
+      transition:background-color .3s ease;
     }
 
     footer strong{color:#fff}
 
     @media(max-width:900px){
       nav{display:none}
+      .theme-select{font-size:11px}
       .city-intro,.place-grid,.planner-grid,.inquiry-wrap{grid-template-columns:1fr}
       .place-layout{grid-template-columns:1fr}
       .food-grid{grid-template-columns:1fr}
@@ -672,6 +858,7 @@
       .quick-info,.row2,.check-grid,.form-grid,.tips-grid{grid-template-columns:1fr}
       .place-photo{height:245px}
       section{padding:62px 0}
+      .theme-switcher{padding:4px 8px}
     }
   </style>
 </head>
@@ -684,13 +871,24 @@
     <span>PORTUGAL SELECT</span>
   </a>
 
-  <nav>
-    <a href="#cities">三大城市</a>
-    <a href="#planner">行程規劃器</a>
-    <a href="#inquiry">旅遊需求表</a>
-    <a href="#food">葡式美食</a>
-    <a class="nav-cta" href="#inquiry">免費諮詢</a>
-  </nav>
+  <div class="topbar-actions">
+    <div class="theme-switcher">
+      <span class="theme-icon">🎨</span>
+      <select id="themeSelector" class="theme-select" aria-label="切換配色風格">
+        <option value="mediterranean">🌊 蔚藍海岸與陶瓦 (推薦)</option>
+        <option value="azulejo">🏛️ 葡萄牙青花瓷 (高雅)</option>
+        <option value="quiet-luxury">🌿 靜奢大地沙丘 (簡約)</option>
+      </select>
+    </div>
+
+    <nav>
+      <a href="#cities">三大城市</a>
+      <a href="#planner">行程規劃器</a>
+      <a href="#inquiry">旅遊需求表</a>
+      <a href="#food">葡式美食</a>
+      <a class="nav-cta" href="#inquiry">免費諮詢</a>
+    </nav>
+  </div>
 </header>
 
 <main id="top">
@@ -1474,6 +1672,21 @@ document.getElementById("leadForm").addEventListener("submit", function(e){
     })
     .saveTravelInquiry(formData);
 });
+
+// 配色主題切換與記憶
+(function(){
+  const themeSelector = document.getElementById("themeSelector");
+  if (!themeSelector) return;
+  const savedTheme = localStorage.getItem("portugal_select_theme") || "mediterranean";
+  document.documentElement.setAttribute("data-theme", savedTheme);
+  themeSelector.value = savedTheme;
+
+  themeSelector.addEventListener("change", function(){
+    const val = this.value;
+    document.documentElement.setAttribute("data-theme", val);
+    localStorage.setItem("portugal_select_theme", val);
+  });
+})();
 </script>
 
 </body>
